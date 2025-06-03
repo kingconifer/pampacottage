@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Default language set to English -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pampa Cottage - Your Serene Escape</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Color Palette */
+        /* Primary Green: #4A6B3A (Earthy, deep green) */
+        /* Accent Orange: #E68A40 (Warm, inviting orange) */
+        /* Light Cream/Background: #F8F5EE (Soft, off-white) */
+        /* Dark Text: #2C3E50 (Charcoal, softer than pure black) */
+        /* Muted Green Accent: #A9B896 (Lighter green for subtle details) */
+
+        :root {
+            --primary-green: #e65c00; /* Updated header orange as per user request */
+            --accent-orange: #E68A40;
+            --light-cream: #F8F5EE;
+            --dark-text: #2C3E50;
+            --muted-green-accent: #A9B896;
+            --shadow-light: 0 4px 15px rgba(0,0,0,0.08);
+            --border-radius-large: 12px;
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-cream);
+            color: var(--dark-text);
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--primary-green); /* Uses the updated primary color */
+            color: #fff;
+            padding: 1rem 20px; /* Slightly less padding than before to make it more compact, added horizontal padding */
+            text-align: center; /* This will be overridden by flexbox for direct children */
+            box-shadow: var(--shadow-light);
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space out content */
+            align-items: center; /* Vertically align items */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+        header .header-info {
+            display: flex;
+            gap: 20px; /* Space between phone and email */
+            font-size: 0.95em;
+            font-weight: 500;
+            flex-wrap: wrap; /* Allow info items to wrap */
+            justify-content: center; /* Center items if they wrap */
+        }
+        header .header-info a {
+            color: #fff;
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        header .header-info a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        header .header-info span {
+            white-space: nowrap; /* Prevent phone/email labels from breaking */
+        }
+
+        /* --- Language Switcher --- */
+        .language-switcher {
+            /* Positioned relative to the header now, so no absolute positioning */
+            position: static; /* Reset from absolute */
+            margin-left: auto; /* Push to the right within the flex container */
+            display: flex;
+            gap: 5px;
+            /* On smaller screens, this will be handled by flex-wrap on the header */
+        }
+        .language-switcher button {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
+            outline: none;
+        }
+        .language-switcher button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #fff;
+        }
+        .language-switcher button.active {
+            background: #fff;
+            color: var(--primary-green);
+            border-color: #fff;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            /* Background image with overlay for text readability */
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/garden.jpg') no-repeat center center/cover;
+            /* Using the user's specified image path */
+
+            color: #fff;
+            text-align: center; /* Ensures text inside is centered */
+            padding: 150px 20px; /* More generous padding */
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: var(--border-radius-large);
+            overflow: hidden; /* Ensures background is contained within radius */
+            box-shadow: var(--shadow-light);
+            margin-top: 0; /* Reset margin-top as header is now present */
+        }
+        .hero-content {
+            text-align: center; /* Explicitly center text within hero-content */
+        }
+        .hero h2 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            font-weight: 300;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- General Section Styling --- */
+        section {
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-light);
+        }
+        section h2 {
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 3.2em;
+            margin-bottom: 40px;
+            font-weight: 600;
+            position: relative;
+        }
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Description Section --- */
+        .description p {
+            font-size: 1.15em;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            line-height: 1.8;
+        }
+
+        /* --- Offerings Section --- */
+        .offerings ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .offerings ul li {
+            background: var(--light-cream);
+            padding: 30px;
+            border-radius: var(--border-radius-large);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: center;
+        }
+        .offerings ul li:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .offerings ul li h3 {
+            color: var(--accent-orange);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .offerings ul li p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-light);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- Contact Info Section --- */
+        .contact-info {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+        .contact-info p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .contact-info p strong {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        .contact-info a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+        .contact-info a:hover {
+            color: #d17530;
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark-text);
+            color: var(--light-cream);
+            margin-top: 50px;
+            font-size: 0.9em;
+            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.3em;
+            }
+            section h2 {
+                font-size: 2.8em;
+            }
+            .offerings ul li {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            header {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                padding: 1rem 10px;
+            }
+            header .header-info {
+                margin-bottom: 10px;
+                flex-direction: column; /* Stack phone/email vertically */
+                gap: 5px;
+            }
+            .language-switcher {
+                position: static; /* Allow it to flow with flexbox */
+                margin-left: 0; /* Remove auto margin */
+                margin-top: 10px; /* Add some space if stacked */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px 0;
+            }
+            .hero {
+                padding: 80px 20px;
+                margin-top: 0; /* Reset margin-top for mobile as header is back */
+            }
+            .hero h2 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 40px 20px;
+                margin-bottom: 30px;
+            }
+            section h2 {
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            .offerings ul {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .description p {
+                font-size: 1em;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            .offerings ul li h3 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-info">
+            <span data-en="Phone:" data-es="Teléfono:">Phone:</span> <a href="tel:+5492302620202" data-en="+54 9 2302620202" data-es="+54 9 2302620202">+54 9 2302620202</a>
+            <span data-en="Email:" data-es="Correo:">Email:</span> <a href="mailto:info@pampacottage.com" data-en="info@pampacottage.com" data-es="info@pampacottage.com">info@pampacottage.com</a>
+        </div>
+        <div class="language-switcher">
+            <button id="lang-en" class="active" data-lang="en">EN</button>
+            <button id="lang-es" data-lang="es">ES</button>
+        </div>
+    </header>
+
+    <!-- The hero section now implicitly acts as the top of your content -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2 data-en="Discover Tranquility at <br>Pampa Cottage" data-es="Descubra la tranquilidad en <br>Pampa Cottage.">Discover Tranquility at Pampa Cottage</h2>
+            <p data-en="Nestled in the picturesque Argentine countryside, Pampa Cottage offers a unique blend of rustic charm and modern comfort." data-es="Ubicado en la pintoresca campiña argentina, Pampa Cottage ofrece una combinación única de encanto rústico y comodidad moderna.">Nestled in the picturesque Argentine countryside, Pampa Cottage offers a unique blend of rustic charm and modern comfort.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="description">
+            <h2 data-en="About Pampa Cottage" data-es="Acerca de Pampa Cottage">About Pampa Cottage</h2>
+            <p data-en="Welcome to Pampa Cottage, your ideal retreat from the hustle and bustle of city life. Our charming cottage is designed to provide a peaceful and rejuvenating experience, surrounded by the natural beauty of the Pampa region. Whether you're looking for a romantic getaway, a peaceful retreat, or a quiet space to reconnect with nature, Pampa Cottage offers the perfect setting." data-es="Bienvenido a Pampa Cottage, tu refugio ideal del bullicio de la ciudad. Nuestra encantadora cabaña está diseñada para brindarte una experiencia tranquila y revitalizante, rodeada de la belleza natural de la región pampeana. Ya sea que busques una escapada romántica, un retiro tranquilo o un espacio tranquilo para conectar con la naturaleza, Pampa Cottage te ofrece el entorno perfecto.">Welcome to Pampa Cottage, your ideal retreat from the hustle and bustle of city life. Our charming cottage is designed to provide a peaceful and rejuvenating experience, surrounded by the natural beauty of the Pampa region. Whether you're looking for a romantic getaway, a peaceful retreat, or a quiet space to reconnect with nature, Pampa Cottage offers the perfect setting.</p>
+            <p data-en="Enjoy breathtaking sunsets, fresh country air, and the soothing sounds of nature right at your doorstep. We pride ourselves on creating a cozy and inviting atmosphere where every detail is taken care of to ensure your comfort and satisfaction." data-es="Disfrute de impresionantes atardeceres, el aire fresco del campo y los relajantes sonidos de la naturaleza a su alcance. Nos enorgullecemos de crear un ambiente acogedor y atractivo donde cuidamos cada detalle para garantizar su comodidad y satisfacción.">Enjoy breathtaking sunsets, fresh country air, and the soothing sounds of nature right at your doorstep. We pride ourselves on creating a cozy and inviting atmosphere where every detail is taken care of to ensure your comfort and satisfaction.</p>
+        </section>
+
+        <section class="offerings">
+            <h2 data-en="What We Offer" data-es="Lo que ofrecemos">What We Offer</h2>
+            <ul>
+                <li>
+                    <h3 data-en="Comfortable Accommodation" data-es="Alojamiento confortable">Comfortable Accommodation</h3>
+                    <p data-en="Cozy bedrooms with private or shared bathrooms. You'll also share use of our house with us, including a comfortable living area, a TV room, a dining room and extensive outside spaces." data-es="Acogedoras habitaciones con baño privado o compartido. También compartirás el uso de nuestra casa con nosotros, que incluye una cómoda sala de estar, una sala de televisión, un comedor y amplios espacios exteriores.">Cozy bedrooms with private or shared bathrooms. You'll also share use of our house with us, including a comfortable living area, a TV room, a dining room and extensive outside spaces.</p>
+                </li>
+                <li>
+                    <h3 data-en="Stunning Natural Surroundings" data-es="Impresionante entorno natural">Stunning Natural Surroundings</h3>
+                    <p data-en="Immerse yourself in nature with access to scenic walking trails, abundant birdwatching, and serene landscapes right outside your door." data-es="Sumérjase en la naturaleza con acceso a pintorescos senderos para caminar, abundante observación de aves y paisajes serenos justo afuera de su puerta.">Immerse yourself in nature with access to scenic walking trails, abundante observación de aves y paisajes serenos justo afuera de su puerta.</p>
+                </li>
+                <li>
+                    <h3 data-en="Modern<br>Amenities" data-es="Comodidades<br>modernas.">Modern<br>Amenities</h3>
+                    <p data-en="Stay connected and comfortable with free Wi-Fi, cozy heating, and all the essential amenities for a pleasant stay." data-es="Manténgase conectado y cómodo con Wi-Fi gratuito, calefacción acogedora y todas las comodidades esenciales para una estadía placentera.">Stay connected and comfortable with free Wi-Fi, cozy heating, and all the essential amenities for a pleasant stay.</p>
+                </li>
+                <li>
+                    <h3 data-en="Outdoor Activities" data-es="Actividades al aire libre">Outdoor Activities</h3>
+                    <p data-en="Relax in our beautiful gardens, enjoy delicious meals, and find ample space for various outdoor enjoyments." data-es="Relájese en nuestros hermosos jardines, disfrute de deliciosas comidas y encuentre un amplio espacio para diversas actividades al aire libre.">Relájese en nuestros hermosos jardines, disfrute de deliciosas comidas y encuentre un amplio espacio para diversas actividades al aire libre.</p>
+                </li>
+                <li>
+                    <h3 data-en="Local Experiences" data-es="Experiencias <br>Locales">Local Experiences</h3>
+                    <p data-en="We provide guidance on discovering charming nearby attractions and authentic cultural experiences of the region." data-es="Ofrecemos orientación para descubrir encantadoras atracciones cercanas y auténticas experiencias culturales de la región.">We provide guidance on discovering charming nearby attractions and authentic cultural experiences of the region.</p>
+                </li>
+                <li>
+                    <h3 data-en="Personalized Service" data-es="Servicio Personalizado">Personalized Service</h3>
+                    <p data-en="We are always ready to assist you, ensuring a memorable and tailor-made experience during your stay at Pampa Cottage." data-es="Siempre estamos listos para ayudarle, garantizando una experiencia memorable y personalizada durante su estadía en Pampa Cottage.">We are always ready to assist you, ensuring a memorable and tailor-made experience during your stay at Pampa Cottage.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="gallery">
+            <h2 data-en="Our Gallery" data-es="Nuestro Galeria">Our Gallery</h2>
+            <div class="gallery-grid">
+                <img src="images/outside.jpg" alt="Pampa Cottage Exterior">
+                <img src="images/sharedspace2.jpg" alt="Pampa Cottage Interior Living Room">
+                <img src="images/room1.jpg" alt="Pampa Cottage Bedroom">
+                <img src="images/garden.jpg" alt="Pampa Cottage Garden View">
+                <img src="images/sharedspace1.jpg" alt="View">
+                <img src="images/local_scenery1.jpg" alt="Pampa Cottage Sunset View">
+                </div>
+        </section>
+
+        <section class="contact-info" id="contact">
+            <h2 data-en="Contact Us" data-es="Contacta con nosotros">Contact Us</h2>
+            <p data-en="Ready to experience the tranquility and beauty of Pampa Cottage? We'd love to hear from you!" data-es="¿Listo para experimentar la tranquilidad y belleza de Pampa Cottage? ¡Nos encantaría saber de ti!">Ready to experience the tranquility and beauty of Pampa Cottage? We'd love to hear from you!</p>
+            <div>
+                <p><strong><span data-en="Phone:" data-es="Teléfono:">Phone:</span></strong> <a href="tel:+5492302620202">+54 9 2302620202</a></p>
+                <p><strong><span data-en="Email:" data-es="Correo electrónico:">Email:</span></strong> <a href="mailto:info@pampacottage.com">info@pampacottage.com</a></p>
+                <p data-en="<strong>Address:</strong> La Pampa, Argentina. Between Colonia Baron and Mauricio Mayer." data-es="<strong>DIRECCIÓN:</strong> La Pampa, Argentina. Entre Colonia Barón y Mauricio Mayer."><strong>Address:</strong> La Pampa, Argentina. Between Colonia Baron and Mauricio Mayer.</p>
+                <p style="margin-top: 30px;" data-en="Connect with us on social media!" data-es="Conéctate con nosotros en Instagram.">Connect with us on social media!</p>
+                <p>
+                <a href="https://www.instagram.com/pampacottagegram/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p data-en="&copy; 2025 Pampa Cottage. All rights reserved." data-es="© 2025 Pampa Cottage. Todos los derechos reservados.">&copy; 2025 Pampa Cottage. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langButtons = document.querySelectorAll('.language-switcher button');
+            const translatableElements = document.querySelectorAll('[data-en], [data-es]'); // Select all elements with data-lang attributes
+
+            // Function to set the language
+            const setLanguage = (lang) => {
+                // Update active button state
+                langButtons.forEach(button => {
+                    if (button.dataset.lang === lang) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+
+                // Update text content
+                translatableElements.forEach(element => {
+                    if (element.dataset[lang]) {
+                        element.innerHTML = element.dataset[lang]; // Use innerHTML to render <br>
+                    }
+                });
+
+                // Set HTML lang attribute for accessibility and SEO (best practice)
+                document.documentElement.lang = lang;
+            };
+
+            // Add event listeners to buttons
+            langButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const selectedLang = event.target.dataset.lang;
+                    setLanguage(selectedLang);
+                });
+            });
+
+            // Set initial language based on browser preference or default to English
+            const browserLang = navigator.language.split('-')[0]; // 'en-US' -> 'en'
+            if (browserLang === 'es') {
+                setLanguage('es');
+            } else {
+                setLanguage('en'); // Default to English if no preference or not 'es'
+            }
+        });
+    </script>
+
+</body>
+</html>
